@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://server-production-af7d.up.railway.app/api';
 
 // Simple cache
 const cache: Record<string, { data: any; timestamp: number }> = {};
