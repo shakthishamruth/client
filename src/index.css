@@ -1,0 +1,104 @@
+/* Define theme CSS variables used by tailwind.config.cjs */
+:root {
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 215 20% 65%;
+  --background: 0 0% 100%;
+  --foreground: 222.2 47.4% 11.2%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+}
+
+/* load Tailwind — do not put @apply that references generated classes before these lines */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* If you need to create custom classes using @apply, do it inside a layer after tailwind has run: */
+@layer components {
+  /* Example: create a reusable card that uses theme utilities */
+  .card {
+    @apply bg-background text-foreground border border-border rounded-md p-4;
+  }
+  
+  /* Enhanced card with hover effects */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  /* Sticky header with backdrop blur */
+  .sticky-header {
+    @apply sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border/40;
+  }
+  
+  /* Filter chip styles */
+  .filter-chip {
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 cursor-pointer;
+  }
+  
+  .filter-chip-active {
+    @apply bg-primary text-primary-foreground shadow-md;
+  }
+  
+  .filter-chip-inactive {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200;
+  }
+  
+  /* Status indicator styles */
+  .status-indicator {
+    @apply p-2 rounded-full transition-colors;
+  }
+  
+  .status-indicator-solved {
+    @apply bg-green-50 text-green-600;
+  }
+  
+  .status-indicator-attempted {
+    @apply bg-orange-50 text-orange-600;
+  }
+  
+  .status-indicator-unsolved {
+    @apply bg-gray-50 text-gray-400;
+  }
+  
+  /* Custom scrollbar styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground));
+    border-radius: 4px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--foreground));
+  }
+
+  /* Fix dropdown transparency issues */
+  [data-radix-popper-content-wrapper] {
+    backdrop-filter: none !important;
+  }
+}
