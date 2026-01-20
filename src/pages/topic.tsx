@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@/config/api';
 import { useState, useEffect } from 'react';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
@@ -59,7 +60,7 @@ export default function DSATopics() {
       
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/api/user/dsa-sheet/${user.userId}`);
+        const response = await fetch(`${API_BASE_URL}/user/dsa-sheet/${user.userId}`);
         if (!response.ok) throw new Error('Failed to fetch DSA sheet');
         
         const data = await response.json();

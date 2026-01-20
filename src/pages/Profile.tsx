@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@/config/api';
 import { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -45,7 +46,7 @@ export default function Profile() {
         const [profileResponse, submissionsResponse, analyticsResponse, problemsResponse] = await Promise.all([
           api.getUserProfile(user.userId),
           api.getUserSubmissions(user.userId),
-          fetch(`http://localhost:5000/api/user/profile-analytics/${user.userId}`).then(res => res.json()),
+          fetch(`${API_BASE_URL}/user/profile-analytics/${user.userId}`).then(res => res.json()),
           api.getProblems(user.userId)
         ]);
         setProfileData(profileResponse);

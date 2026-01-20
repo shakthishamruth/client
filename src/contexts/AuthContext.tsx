@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@/config/api';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface User {
@@ -44,7 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (userId: string, password: string): Promise<boolean> => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

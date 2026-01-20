@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@/config/api';
 import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -189,7 +190,7 @@ export default function IDELayout() {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/user/problems/${id}`
+          `${API_BASE_URL}/user/problems/${id}`
         );
         if (!response.ok) throw new Error("Problem not found");
         const problemData = await response.json();
@@ -307,7 +308,7 @@ export default function IDELayout() {
           ? Math.floor((new Date().getTime() - contestStartTime.getTime()) / (1000 * 60))
           : 0;
         
-        const response = await fetch("http://localhost:5000/api/contest/submit", {
+        const response = await fetch(`${API_BASE_URL}/contest/submit`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

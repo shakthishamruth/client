@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@/config/api';
 import { useState, useEffect } from "react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
@@ -56,7 +57,7 @@ export default function WeeklyContest() {
 
   const fetchActiveContest = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/contest/active");
+      const response = await fetch(`${API_BASE_URL}/contest/active`);
       const data = await response.json();
       
       if (data.active) {
@@ -76,7 +77,7 @@ export default function WeeklyContest() {
     try {
       console.log("Starting contest for user:", user?.userId);
       
-      const response = await fetch("http://localhost:5000/api/contest/start", {
+      const response = await fetch(`${API_BASE_URL}/contest/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user?.userId })

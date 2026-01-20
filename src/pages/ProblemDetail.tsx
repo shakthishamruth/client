@@ -1,3 +1,5 @@
+
+import { API_BASE_URL } from '@/config/api';
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { MainLayout } from "@/components/layout/MainLayout";
@@ -59,7 +61,7 @@ export default function ProblemDetail() {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/problems/${id}`
+          `${API_BASE_URL}/problems/${id}`
         );
         if (!response.ok) throw new Error("Problem not found");
         const problemData = await response.json();

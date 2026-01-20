@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://server-production-af7d.up.railway.app/api';
+import { API_BASE_URL } from '@/config/api';
 
 // Simple cache
 const cache: Record<string, { data: any; timestamp: number }> = {};
